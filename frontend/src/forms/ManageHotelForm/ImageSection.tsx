@@ -19,7 +19,7 @@ const ImageSection = () => {
             validate: (imageFiles) => {
               const totalLength = imageFiles.length;
               if (totalLength === 0) {
-                return "Atleast one iamge shoulde be added";
+                return "Atleast one image shoulde be added";
               }
               if (totalLength > 6) {
                 return "Total Number of images cannot be more than 6";
