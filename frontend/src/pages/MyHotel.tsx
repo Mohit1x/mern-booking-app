@@ -15,7 +15,6 @@ const MyHotel = () => {
       onError: () => {},
     }
   );
-  console.log(hotelData);
 
   if (!hotelData) {
     return <span>No Hotels Found</span>;
