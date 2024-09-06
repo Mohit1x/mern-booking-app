@@ -23,3 +23,14 @@ test("should allow user to search", async ({ page }) => {
   await expect(page.getByText("Hotels found in mumbai")).toBeVisible();
   await expect(page.getByText("Mumbai Gateways")).toBeVisible();
 });
+
+test("should show details page", async ({ page }) => {
+  await page.goto(UI_URL);
+
+  await page.getByPlaceholder("Where are you going?").fill("mumbai");
+  await page.getByRole("button", { name: "Search" }).click();
+
+  await page.getByText("Mumbai Gateways").click();
+  await expect(page).toHaveURL(/detail/);
+  await expect(page.getByRole("button", { name: "Book Now" })).toBeVisible();
+});
