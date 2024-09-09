@@ -66,7 +66,7 @@ const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
   };
 
   return (
-    <div className="flex flex-col p-4 bg-blue-300 gap-4">
+    <div className="flex flex-col p-4 bg-blue-300 gap-4 shadow-2xl">
       <h1 className="text-md font-bold text-white bg-blue-600 w-fit p-2">
         ${pricePerNight} per night
       </h1>

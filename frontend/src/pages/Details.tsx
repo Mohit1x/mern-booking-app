@@ -44,7 +44,7 @@ const Details = () => {
         ))}
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr]">
-        <div className="whitespace-pre-line border border-slate-300 p-2 font-semibold bg-blue-600 text-white">
+        <div className="whitespace-pre-line font-semibold">
           <h1 className="capitalize text-teal-300 font-bold text-2xl">
             {hotel.name}
           </h1>
