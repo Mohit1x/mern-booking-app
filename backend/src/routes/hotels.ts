@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import Hotel from "../models/hotel";
-import { BookingType, HotelSearchResponse } from "../shared/types";
+import { BookingType, HotelSearchResponse, HotelType } from "../shared/types";
 import { param, validationResult } from "express-validator";
 import Stripe from "stripe";
 import verifyToken from "../middleware/auth";
@@ -147,17 +147,17 @@ router.post(
         userId: req.userId,
       };
 
-      const hotel = await Hotel.findOneAndUpdate(
-        { _id: req.params.hotelId },
-        { $push: { bookings: newBooking } }
-      );
+      const hotel = await Hotel.findById(req.params.hotelId);
 
       if (!hotel) {
         return res.status(400).json({ message: "hotel not found" });
       }
 
+      hotel.bookings = [...hotel.bookings, newBooking];
+
       await hotel.save();
-      res.status(200).send();
+
+      res.status(200).json({ message: "Hotel Booked" });
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: "Something went wrong " });
